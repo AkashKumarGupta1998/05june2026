@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Google Sheets CSV Stream Parser Pipeline
     async function ingestGoogleSheetsDatabase() {
-        if (SHEET_CSV_URL.includes("XXXXXXXXXXXXX")) {
+        if (SHEET_CSV_URL.includes("https://docs.google.com/spreadsheets/d/e/2PACX-1vTsdhTv5mX2Hbz747QFvF5f2MTYgHgOJkFXmfP7KMozGUinQ_j7AO3czLiy8ORe9ICS4u9feau64Uao/pub?gid=0&single=true&output=csv")) {
             // If placeholder URL exists, gracefully load default fallback configuration data structures
             constructBlogConsole();
             return;
