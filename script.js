@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // --- CONNECT CONFIGURATION INTERFACES ---
     // 1. Paste your published Google Sheet CSV export link here
-    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSXXXXXXXXXXXXX/pub?gid=0&output=csv";
+    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTsdhTv5mX2Hbz747QFvF5f2MTYgHgOJkFXmfP7KMozGUinQ_j7AO3czLiy8ORe9ICS4u9feau64Uao/pub?gid=0&single=true&output=csv";
     // 2. Paste your deployed Google Apps Script Web App Endpoint URL here
-    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyXXXXXXXXXXXX/exec";
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzciq6zRi0IpJZznSppqJRgG868tMpaJcdx4Ki9DjJGKsvIUUBipX85b4xqYzeoK39w/exec";
 
     // Standard Loading Systems Clearance
     setTimeout(() => {
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         try {
             // Send payload to Google Sheets script endpoint
-            await fetch(APPS_SCRIPT_URL, {
+            await fetch(https://script.google.com/macros/s/AKfycbzciq6zRi0IpJZznSppqJRgG868tMpaJcdx4Ki9DjJGKsvIUUBipX85b4xqYzeoK39w/exec, {
                 method: "POST",
                 mode: "no-cors", // Required to prevent cross-origin preflight blockers from Apps Script
                 headers: { "Content-Type": "application/json" },
