@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 1. Paste your published Google Sheet CSV export link here
     const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTsdhTv5mX2Hbz747QFvF5f2MTYgHgOJkFXmfP7KMozGUinQ_j7AO3czLiy8ORe9ICS4u9feau64Uao/pub?gid=0&single=true&output=csv";
     // 2. Paste your deployed Google Apps Script Web App Endpoint URL here
-    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzciq6zRi0IpJZznSppqJRgG868tMpaJcdx4Ki9DjJGKsvIUUBipX85b4xqYzeoK39w/exec";
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwZXMk085Vq2a-VIcsoZgAqeeWLZd3J-_NqUabUVwjRLcymkJSFWScCfbhQdsWxNwns/exec";
 
     // Standard Loading Systems Clearance
     setTimeout(() => {
