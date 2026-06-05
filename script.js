@@ -8,24 +8,24 @@ document.addEventListener('DOMContentLoaded', function() {
     function deactivateLoadingScreen() {
         const loader = document.getElementById('loading-screen');
         if (loader && loader.style.opacity !== '0') {
-            loader.style.transition = 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+            loader.style.transition = 'opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
             loader.style.opacity = '0';
-            setTimeout(() => loader.style.display = 'none', 400);
+            setTimeout(() => loader.style.display = 'none', 350);
         }
     }
-    // Hard structural timeout safety fallback check
-    setTimeout(deactivateLoadingScreen, 1800);
+    // Hard structural timeout safety fallback backup rule
+    setTimeout(deactivateLoadingScreen, 1500);
 
-    // Dynamic initial runtime memory layer fallback
+    // Initial runtime local state fallback array matching Akash's profile scope
     let dynamicPosts = [
         {
             id: "1",
-            title: "Architecting End-To-End Control Tower Infrastructure",
-            content: "Achieving high tracking performance levels across diverse distribution operations requires real-time routing automation parameters.",
+            title: "Mitigating Breaches and Structural RTO Drivers in Quick Commerce",
+            content: "Mitigating logistics anomalies across hyperlocal networks requires deep routing logic oversight. In express operations, reducing breaches down to under 4% relies on active courier capacity tracking and automated warehouse dispatch checkpoints.",
             date: "June 2026",
-            likes: 24,
-            dislikes: 1,
-            comments: [{user: "SystemSync", message: "Static data fallback layer rendered successfully."}]
+            likes: 42,
+            dislikes: 0,
+            comments: [{user: "SystemMemory", message: "Internal portfolio state asset synchronized successfully."}]
         }
     ];
 
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
             timestamp: new Date().toISOString()
         };
 
-        // UI Optimistic Updates for continuous low latency feel
+        // UI Optimistic Upgrades for instantaneous response perception
         if (type === 'like' || type === 'dislike') {
             const countSpan = document.getElementById(`${type}-count-${postId}`);
             if (countSpan) {
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (wrapper) {
                 const dummyElement = document.createElement('div');
                 dummyElement.className = 'single-cmt';
-                dummyElement.innerHTML = `<strong>@You:</strong> ${rawValue.replace(/</g, "&lt;")}`;
+                dummyElement.innerHTML = `<strong>@Visitor:</strong> ${rawValue.replace(/</g, "&lt;")}`;
                 wrapper.appendChild(dummyElement);
             }
         }
@@ -62,9 +62,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
             });
-            console.log("Transmission step complete.");
+            console.log("Transmission interaction logs saved successfully.");
         } catch (error) {
-            console.error("Transmission error across network infrastructure:", error);
+            console.error("Transmission error encountered across grid pipeline:", error);
         }
     };
 
@@ -103,25 +103,25 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             article.innerHTML = `
-                <span class="blog-timestamp"><i class="far fa-calendar-alt"></i> SYSTEM_LOG // ${post.date}</span>
+                <span class="blog-timestamp"><i class="far fa-calendar-alt"></i> METRIC_LOG // ${post.date}</span>
                 <h3>${post.title}</h3>
-                <p style="margin-top: 10px; color: var(--text-neon); font-size: 0.95rem;">${post.content}</p>
+                <p style="margin-top: 10px; color: var(--text-neon); font-size: 0.9rem;">${post.content}</p>
                 
                 <div class="blog-interactive-row">
                     <button class="engagement-trigger" onclick="window.executeVote('${post.id}', 'like')">
-                        <i class="far fa-thumbs-up"></i> Upvote (<span id="like-count-${post.id}">${post.likes}</span>)
+                        <i class="far fa-thumbs-up"></i> Upvote Log (<span id="like-count-${post.id}">${post.likes}</span>)
                     </button>
                     <button class="engagement-trigger" onclick="window.executeVote('${post.id}', 'dislike')">
-                        <i class="far fa-thumbs-down"></i> Downvote (<span id="dislike-count-${post.id}">${post.dislikes}</span>)
+                        <i class="far fa-thumbs-down"></i> Downvote Log (<span id="dislike-count-${post.id}">${post.dislikes}</span>)
                     </button>
                 </div>
 
                 <div class="comment-logs-box">
-                    <h6>Public Ledger Tracks</h6>
+                    <h6>Public Ledger Records</h6>
                     <div class="comments-list-wrapper" id="comments-wrapper-${post.id}">${stringifiedComments}</div>
                     <div class="cmt-input-dock">
-                        <input type="text" id="comment-input-${post.id}" placeholder="Input credential response to thread...">
-                        <button class="console-cta" onclick="window.executeCommentSubmission('${post.id}')">Reply</button>
+                        <input type="text" id="comment-input-${post.id}" placeholder="Input data query responses directly onto node...">
+                        <button class="console-cta" onclick="window.executeCommentSubmission('${post.id}')">Submit</button>
                     </div>
                 </div>
             `;
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
             for (let i = 1; i < csvRows.length; i++) {
                 if (!csvRows[i].trim()) continue;
                 
-                // Advanced split tool safely processing parameters wrapped in strings and quotes
+                // Advanced regex parser handling cell splits containing internal punctuation safely
                 const matches = csvRows[i].match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || csvRows[i].split(',');
                 const cleanCells = matches.map(cell => cell.replace(/^"|"$/g, '').trim());
 
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     id: cleanCells[0],
                     title: cleanCells[1],
                     content: cleanCells[2],
-                    date: cleanCells[3] ? cleanCells[3] : "Recent Log",
+                    date: cleanCells[3] ? cleanCells[3] : "Active Session",
                     likes: 0, 
                     dislikes: 0,
                     comments: []
@@ -164,11 +164,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             constructBlogConsole();
         } catch (fault) {
-            console.error("Ingestion breakdown notice: ", fault);
+            console.error("Ingestion pipeline broken: ", fault);
             const loggingPanel = document.getElementById('blog-error-handler');
             if (loggingPanel) {
                 loggingPanel.classList.remove('dynamic-hide');
-                loggingPanel.textContent = "Data connection notice: Cloud Sheet array offline. Rendering built-in memory bank nodes.";
+                loggingPanel.textContent = "Data connection notice: Remote cloud sheet compilation error. Local operational memory layers loaded instead.";
             }
             constructBlogConsole();
         }
