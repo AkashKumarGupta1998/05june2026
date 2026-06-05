@@ -1,5 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
-    
+    // FORCE HIDE LOADING SCREEN SYSTEM (Bypasses any network crashes)
+setTimeout(() => {
+    const loader = document.getElementById('loading-screen');
+    if (loader) {
+        loader.style.transition = 'opacity 0.5s ease';
+        loader.style.opacity = '0';
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 500);
+    }
+}, 2000); // 2000ms = 2 seconds max
     // --- CONNECT CONFIGURATION INTERFACES ---
     // 1. Paste your published Google Sheet CSV export link here
     const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTsdhTv5mX2Hbz747QFvF5f2MTYgHgOJkFXmfP7KMozGUinQ_j7AO3czLiy8ORe9ICS4u9feau64Uao/pub?gid=0&single=true&output=csv";
