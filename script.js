@@ -1,31 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // FORCE HIDE LOADING SCREEN SYSTEM (Bypasses any network crashes)
-setTimeout(() => {
-    const loader = document.getElementById('loading-screen');
-    if (loader) {
-        loader.style.transition = 'opacity 0.5s ease';
-        loader.style.opacity = '0';
-        setTimeout(() => {
-            loader.style.display = 'none';
-        }, 500);
-    }
-}, 2000); // 2000ms = 2 seconds max
-    // --- CONNECT CONFIGURATION INTERFACES ---
-    // 1. Paste your published Google Sheet CSV export link here
+    
+    // --- 1. CORE ANTI-FREEZE SAFETY SYSTEM ---
+    // Forces the loading overlay off after a maximum of 2 seconds regardless of network drops.
+    setTimeout(() => {
+        const fallbackLoader = document.getElementById('loading-screen');
+        if (fallbackLoader && fallbackLoader.style.opacity !== '0') {
+            fallbackLoader.style.transition = 'opacity 0.5s ease';
+            fallbackLoader.style.opacity = '0';
+            setTimeout(() => fallbackLoader.style.display = 'none', 500);
+            console.log("System Status Monitor: Safe-mode timeout override executed.");
+        }
+    }, 2000);
+
+    // --- 2. PIPELINE CONNECTION CONFIGURATIONS ---
     const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTsdhTv5mX2Hbz747QFvF5f2MTYgHgOJkFXmfP7KMozGUinQ_j7AO3czLiy8ORe9ICS4u9feau64Uao/pub?gid=0&single=true&output=csv";
-    // 2. Paste your deployed Google Apps Script Web App Endpoint URL here
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwZXMk085Vq2a-VIcsoZgAqeeWLZd3J-_NqUabUVwjRLcymkJSFWScCfbhQdsWxNwns/exec";
 
-    // Standard Loading Systems Clearance
-    setTimeout(() => {
-        const loader = document.getElementById('loading-screen');
-        if (loader) {
-            loader.style.opacity = '0';
-            setTimeout(() => loader.style.display = 'none', 500);
-        }
-    }, 1000);
-
-    // Baseline fallback structural array in case Google API pipeline experiences delay
+    // Baseline fallback structural array in case database is loading or offline
     let dynamicPosts = [
         {
             id: "1",
@@ -38,7 +29,7 @@ setTimeout(() => {
         }
     ];
 
-    // Master function to execute public interaction streaming directly to Google Sheets database
+    // --- 3. PUBLIC INTERACTION DATABASE STREAMER ---
     window.transmitInteraction = async function(postId, type, rawValue, elementIdToReflect) {
         const payload = {
             postId: postId.toString(),
@@ -47,7 +38,7 @@ setTimeout(() => {
             timestamp: new Date().toISOString()
         };
 
-        // UI Optimistic Upfront Update for speed
+        // UI Optimistic Updates for high-speed feedback
         if (type === 'like' || type === 'dislike') {
             const countSpan = document.getElementById(`${type}-count-${postId}`);
             if (countSpan) countSpan.textContent = parseInt(countSpan.textContent) + 1;
@@ -62,10 +53,10 @@ setTimeout(() => {
         }
 
         try {
-            // Send payload to Google Sheets script endpoint
-            await fetch(https://script.google.com/macros/s/AKfycbzciq6zRi0IpJZznSppqJRgG868tMpaJcdx4Ki9DjJGKsvIUUBipX85b4xqYzeoK39w/exec, {
+            // Stream metrics via POST payload explicitly to your configuration endpoint 
+            await fetch(APPS_SCRIPT_URL, {
                 method: "POST",
-                mode: "no-cors", // Required to prevent cross-origin preflight blockers from Apps Script
+                mode: "no-cors", // Bypasses Cross-Origin preflight limitations securely with Apps Script
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
             });
@@ -75,7 +66,7 @@ setTimeout(() => {
         }
     };
 
-    // Global hook for commenting processing
+    // Global interaction handling hooks
     window.executeCommentSubmission = function(postId, postArrayIndex) {
         const targetInput = document.getElementById(`comment-input-${postId}`);
         if (!targetInput || !targetInput.value.trim()) return;
@@ -85,12 +76,11 @@ setTimeout(() => {
         targetInput.value = '';
     };
 
-    // Global hook for downvoting processing
     window.executeVote = function(postId, type) {
         window.transmitInteraction(postId, type, 'voted', null);
     };
 
-    // Dynamic UI Engine Renderer
+    // --- 4. DYNAMIC DOM INTERACTION ENGINE RENDERER ---
     function constructBlogConsole() {
         const wrapper = document.getElementById('live-blog-wrapper');
         if (!wrapper) return;
@@ -138,10 +128,10 @@ setTimeout(() => {
         });
     }
 
-    // Google Sheets CSV Stream Parser Pipeline
+    // --- 5. GOOGLE SHEETS PIPELINE STREAM PARSER ---
     async function ingestGoogleSheetsDatabase() {
-        if (SHEET_CSV_URL.includes("https://docs.google.com/spreadsheets/d/e/2PACX-1vTsdhTv5mX2Hbz747QFvF5f2MTYgHgOJkFXmfP7KMozGUinQ_j7AO3czLiy8ORe9ICS4u9feau64Uao/pub?gid=0&single=true&output=csv")) {
-            // If placeholder URL exists, gracefully load default fallback configuration data structures
+        // Prevents execution loops if absolute placeholders are found
+        if (SHEET_CSV_URL.includes("XXXXXXXXXXXXX")) {
             constructBlogConsole();
             return;
         }
@@ -150,11 +140,10 @@ setTimeout(() => {
             const networkResponse = await fetch(SHEET_CSV_URL);
             const csvRawText = await networkResponse.text();
             
-            // Basic secure line processing
             const executionLines = csvRawText.split('\n').map(line => line.split(','));
             const compiledPosts = [];
 
-            // Skip row 1 containing header metadata strings
+            // Discard row index 0 containing header configurations
             for (let i = 1; i < executionLines.length; i++) {
                 if (executionLines[i].length < 3 || !executionLines[i][0]) continue;
                 
@@ -184,6 +173,6 @@ setTimeout(() => {
         }
     }
 
-    // Initialize Connection Sync Execution Engine
+    // Initialize Engine Runtime Execution
     ingestGoogleSheetsDatabase();
 });
